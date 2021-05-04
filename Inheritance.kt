@@ -1,5 +1,7 @@
 // https://developer.android.com/training/kotlinplayground
 
+import kotlin.math.PI
+
 fun main() {
     val squareCabin = SquareCabin(6, 50.0)
 
