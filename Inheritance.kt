@@ -1,6 +1,7 @@
 // https://developer.android.com/training/kotlinplayground
 
 import kotlin.math.PI
+import kotlin.math.sqrt
 
 fun main() {
     val squareCabin = SquareCabin(6, 50.0)
@@ -75,6 +76,11 @@ open class RoundHut(residents: Int, val radius: Double) : Dwelling(residents){
 
     override fun floorArea(): Double{
         return PI * radius * radius
+    }
+
+    fun calculateMaxCarpetSize(): Double{
+        val diameter = 2 * radius
+        return sqrt(diameter * diameter / 2)
     }
 }
 
