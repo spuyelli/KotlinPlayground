@@ -14,23 +14,25 @@ fun main() {
     }
     
     
-    val roundHut = RoundHut(3)
+    val roundHut = RoundHut(3, 10.0)
 
     with(roundHut){
         println("\nRound Hut\n==========")
         println("Capacity: ${capacity}")
         println("Material: ${buildingMaterial}")
         println("Has room? ${hasRoom()}")
+        println("Floor area: ${floorArea()}")
     }
 
     
-    val roundTower = RoundTower(4)
+    val roundTower = RoundTower(4, 15.5)
 
     with(roundTower) {
         println("\nRound Tower\n==========")
         println("Material: ${buildingMaterial}")
         println("Capacity: ${capacity}")
         println("Has room? ${hasRoom()}")
+        println("Floor area: ${floorArea()}")
     }
 }
 
@@ -54,7 +56,7 @@ class SquareCabin(residents: Int, val length: Double) : Dwelling(residents){
     }
 }
 
-open class RoundHut(residents: Int, val length: Double) : Dwelling(residents){
+open class RoundHut(residents: Int, val radius: Double) : Dwelling(residents){
     override val buildingMaterial = "Straw"
     override val capacity = 4
 
@@ -63,7 +65,11 @@ open class RoundHut(residents: Int, val length: Double) : Dwelling(residents){
     }
 }
 
-class RoundTower(residents:Int, val floors: Int = 2) : RoundHut(residents){
+class RoundTower(residents:Int, val radius: Double, val floors: Int = 2) : RoundHut(residents){
     override val buildingMaterial = "Stone"
     override val capacity = 4 * floors
+
+    override fun floorArea(): Double{
+        return PI * radius * radius * floors
+    }
 }
