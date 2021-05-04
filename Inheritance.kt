@@ -26,6 +26,7 @@ fun main() {
         println("Has room? ${hasRoom()}")
         getRoom()
         println("Floor area: %.2f".format(floorArea()))
+        println("Max carpet size: %.2f".format(calculateMaxCarpetSize()))
     }
 
     
@@ -37,6 +38,7 @@ fun main() {
         println("Capacity: ${capacity}")
         println("Has room? ${hasRoom()}")
         println("Floor area: %.2f".format(floorArea()))
+        println("Max carpet size: %.2f".format(calculateMaxCarpetSize()))
     }
 }
 
@@ -78,7 +80,7 @@ open class RoundHut(residents: Int, val radius: Double) : Dwelling(residents){
         return PI * radius * radius
     }
 
-    fun calculateMaxCarpetSize(): Double{
+    open fun calculateMaxCarpetSize(): Double{
         val diameter = 2 * radius
         return sqrt(diameter * diameter / 2)
     }
@@ -90,5 +92,9 @@ class RoundTower(residents:Int, radius: Double, val floors: Int = 2) : RoundHut(
 
     override fun floorArea(): Double{
         return super.floorArea() * floors
+    }
+
+    override fun calculateMaxCarpetSize(): Double{
+        return super.calculateMaxCarpetSize() * floors
     }
 }
