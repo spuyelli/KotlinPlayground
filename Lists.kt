@@ -37,5 +37,24 @@ fun main() {
     println("Lista: $numerosDesordenados")
     println("Lista ordenada: ${numerosDesordenados.sorted()}")
     
+    println("------------------------------------")
 
+    val invitadosPorFamilia = listOf(2, 4, 1, 3)
+    var invitadosTotales = 0
+    var index = 0
+
+    while(index < invitadosPorFamilia.size){
+        invitadosTotales += invitadosPorFamilia[index]
+        index++
+    }
+
+    println("Invitados totales: $invitadosTotales")
+
+    println("------------------------------------")
+
+    val nombres = listOf("Jessica", "Henry", "Alicia", "Jose")
+
+    for(nombre in nombres){
+        println("$nombre - Caracteres: ${nombre.length}")
+    }
 }
