@@ -13,12 +13,14 @@ class Fideos : Item("Fideos", 10){
 class Orden(val numeroOrden: Int){
     private val listaItems = mutableListOf<Item>()
 
-    fun agregarItem(nuevoItem: Item){
+    fun agregarItem(nuevoItem: Item): Orden{
         listaItems.add(nuevoItem)
+        return this
     }
 
-    fun agregarTodos(nuevosItems: List<Item>){
+    fun agregarTodos(nuevosItems: List<Item>): Orden{
         listaItems.addAll(nuevosItems)
+        return this
     }
 
     fun listar(){
@@ -45,15 +47,33 @@ class Vegetales(vararg val toppings: String) : Item("Vegetales", 5){
 }
 
 fun main() {
-    val fideos = Fideos()
-    val vegetales1 = Vegetales("Cebolla", "Calabaza", "Zanahoria")
-    val vegetales2 = Vegetales()
-    println(fideos)
-    println(vegetales1)
-    println(vegetales2)
+    val ordersList = mutableListOf<Orden>()
 
-    val orden = Orden(1)
-    orden.agregarItem(vegetales1)
-    orden.agregarItem(fideos)
-    orden.listar()
+    val order1 = Orden(1)
+    order1.agregarItem(Fideos())
+    ordersList.add(order1)
+
+    val order2 = Orden(2)
+    order2.agregarItem(Fideos())
+    order2.agregarItem(Vegetales())
+    ordersList.add(order2)
+
+    val order3 = Orden(3)
+    val items = listOf(Fideos(), Vegetales("Carrots", "Beans", "Celery"))
+    order3.agregarTodos(items)
+    ordersList.add(order3)
+
+    val order4 = Orden(4).agregarItem((Fideos()).agregarItem((Vegetales("Cabbage", "Onion"))
+    ordersList.add(order4)
+
+    ordersList.add(
+        Orden(5)
+            .agregarItem((Fideos())
+            .agregarItem((Fideos())
+            .agregarItem((Vegetales("Spinach")))
+
+    for (order in ordersList) {
+        order.listar()
+        println()
+    }
 }
